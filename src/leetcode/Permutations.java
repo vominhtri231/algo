@@ -1,17 +1,36 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 import java.util.stream.Collectors;
-
 
 public class Permutations {
 
     public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        permute(nums, 0, result);
+        return result;
+    }
+
+    void permute(int[] nums, int step, List<List<Integer>> result) {
+        if (step == nums.length - 1) {
+            result.add(Arrays.stream(nums).boxed().collect(Collectors.toList()));
+            return;
+        }
+
+        for (int i = step; i < nums.length; i++) {
+            int t = nums[i];
+            nums[i] = nums[step];
+            nums[step] = t;
+
+            permute(nums, step + 1, result);
+
+            int t1 = nums[i];
+            nums[i] = nums[step];
+            nums[step] = t1;
+        }
+    }
+
+    public List<List<Integer>> permute2(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Node first = new Node(Arrays.stream(nums).boxed().collect(Collectors.toSet()), new ArrayList<>());
         Stack<Node> waiting = new Stack<>();
@@ -51,6 +70,6 @@ public class Permutations {
 
     public static void main(String[] args) {
         Permutations solution = new Permutations();
-        System.out.println(solution.permute(new int[]{0, 1, 3}));
+        System.out.println(solution.permute(new int[]{1, 2, 3}));
     }
 }
