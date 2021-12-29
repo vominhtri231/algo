@@ -10,7 +10,7 @@ public class InsertInterval {
         Segment insertSegment = new Segment(newInterval);
         int insertPosition = getInsertPosition(sortedSegments, insertSegment);
 
-
+        return null;
     }
 
     private int getInsertPosition(List<Segment> sortedSegment, Segment segment) {
