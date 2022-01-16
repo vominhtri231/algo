@@ -31,6 +31,6 @@ public class DivideArrayEqually {
 
     public static void main(String[] args) {
         DivideArrayEqually divideArrayEqually = new DivideArrayEqually();
-        System.out.println(divideArrayEqually.divideTheArrayEqually(new int[]{1, 5, 7}));
+        System.out.println(divideArrayEqually.divideTheArrayEqually(new int[]{1, 5, 6}));
     }
 }
